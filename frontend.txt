@@ -1,0 +1,228 @@
+-------------------------------
+1.How the internet works.
+Think of the internet as a global network of computers connected by cables, fiber optices, satellites, and routers.
+
+What happens when you open a website?
+1.You type google.com in the browser
+2.Browser finds where google.com lives (DNS)
+3.Browser sends a request to Google's server
+4.Google's server sends a response
+5.Browser renders the page
+
+Everything is request <-> response
+----------------------------------
+2.Client-Server Model
+
+Client
+.Browser
+.Mobile app
+.Postman
+.Frontend
+
+Server
+.Backend app(Node,Java,Python)
+.Database
+.APIs
+
+Flow
+Client -> request -> Server
+Client <- Response <- Server
+
+Example:
+Browser -> GET/products -> Server
+Server -> JSON data -> Browser
+-----------------------------------------
+3.IP address (Identity of a device)
+
+AN IP address is like a phone number for devices
+Example:
+. 192.168.1.1 (IPv4)
+. 2001.db8::1 (IPv6)
+
+Types
+|    Type    |        Meaning       |
+| Public IP  | Visible to Internet  | 
+| Private IP | Inside local network |
+|    IPv4    |   32-bit(limited)    |
+|    IPv6    |    128-bit(huge)     |
+------------------------------------------
+4. Domain Names (Human-Friendly Names)
+Humans hate numbers so instead of:
+142.25.182.14
+We use:
+google.com
+Domain = Names
+IP = address
+--------------------------------------------
+5.DNS (Domain Name System)
+DNS is the internet's phonebook.
+DNS flow:
+google.com -> DNS Server -> 142.250.182.14
+
+Steps:
+1.Browser checks cache
+2.OS checks cache
+3.ISP DNS
+4.Root DMS -> TLD(.com) -> Authoritative DNS
+5.IP returned
+-------------------------------------------
+6. HTTP & HTTPS (How Data Moves)
+
+HTTP(HyperText Transfer Protocol)
+.Plain HyperText
+.Not secure
+.Data can be read
+
+HTTPS (HTTP Secure)
+.Encrypted using TLS/SSL
+.Secure 
+.Cannot be read by attackers
+
+Exapmle:
+https://example.com/login
+---------------------------------------------
+7. TCP & UDP (Transport Protocols)
+these decide How data is delivered
+
+TCP (Reliable)
+.Connection-based
+.Guarantees delivery
+.Slower but safe
+
+used for:
+.HTTP/HTTPS
+.Emails
+.File transfer
+
+TCP flow:
+Handshake -> Send -> Acknowledge
+
+UDP (Fast, Unreliable)
+.No connection 
+.No Guarantee
+.Very Fast
+
+used for:
+.Video streaming
+.Gaming
+.VoIP
+.live calls
+
+Feature        TCP          UDP
+reliable       ✔️           ❌
+speed        slower        Faster
+order       Maintained  Notguaranteed
+use case     Web,APIs    Video,games
+---------------------------------------
+8.HTTP Request & Response
+
+HTTP Request
+GET /users HTTP/1.1
+Host: api.example.com
+Authorization: Bearer token
+
+HTTP Response
+200 OK
+Content-Type: application/JSON
+{"name":"Suhail"}
+---------------------------------------
+9.Headers (Metadata)
+Headers are extra information sent with request/response
+
+Request Headers
+|     Header    |     Purpose    |
+| Authorization |   Auth token   |
+| Content-Type  | JSON/form-data |
+|  User-agent   |  Browser info  |
+|    Cookie     |  Session data  |
+
+Response Headers
+|      Header      |         Purpose       |
+|      Status      |  200, 404             |
+|    Set-Cookie    |  Store cookie         |
+|  cache-control   |  caching rules        |
+|       CORS       |  Cross-origin access  |
+--------------------------------------------
+10.Axios(HTTP Client)
+Axios is a javascript library to make HTTP requests.
+
+why Axios ?
+.Easier then fetch 
+.Auto json parsing 
+.interceptors
+.Timeouts 
+.Better erroe handling 
+
+Example 
+
+import axios from "axios"
+axios.get("https://api.example.com/users")
+.then(res=>console.log(res.data))
+.catch(err=>console.log(err))
+
+POST 
+axios.post("/login",{
+    email:"a@b.com",
+    password:"123"
+})
+---------------------------------------------
+11.CDN (Content Delivery Network)
+CDN = Server distributed across the world
+Why?
+.Faster load
+.Less server load
+.Better performance
+Without CDN
+User(India) -> Server (USA)
+With CDN 
+User(India) -> Nearby CDN (Mumbai)
+
+Used by:
+.Images
+.Videos
+.JS/CSS files
+
+Examples:
+.Cloudflare
+.AWS CloudFront
+.Akamai
+----------------------------------
+12.Proxy Server
+A proxy sits between client and server
+client -> Proxy -> Server
+
+uses:
+.Hide IP
+.Cached data
+.Control access
+.Logging
+.Security
+--------------------------------------
+13.VPN(Virtual Private Network)
+VPN = Encrypted tunnel
+client -> Encrypted Tunnel -> VPN Server -> Internet
+Benefits
+.Hides IP
+.Secure on public WiFi
+.Access blocked Content
+
+    Proxy   |       VPN     |
+  App-level |  System-wide  |
+ May encrypt| Always encrypt|
+ Partial traffic | All trafic |
+ ---------------------------------------------
+ 14. How everything connects (Real flow)
+ Browser -> DNS(IP) -> TCP Connection -> HTTPs (Encrypted HTTP) -> Header + Body -> Server -> Response-> CDN (if any) -> Browser Render 
+
+ONE-LINE SUMMARY
+.Internet -> Network of networks
+.Client-Server -> Request & Response
+.IP -> address
+.Domain -> Name
+.DNS -> Name -> IP
+.TCP/UDP -> Transport
+.HTTP/HTTPS -> Communication
+.Headers -> Metadata
+.Axios -> HTTP tool
+.CDN -> speed
+.Proxy/VPN -> Middleman & Security

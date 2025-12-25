@@ -1,0 +1,13 @@
+24-12-2025
+@Master Works
+
+HTML - Hyper Text Markup Language
+-> Defines Content & Structure of Web pages.
+
+HyperText 
+-> the pieces of the text which link other documents in the website
+-> these pieces of text are foundation of website.
+
+Markup Language
+-> Its like a highlighting a text as per requirement (eg. bold,underline,italic features)
+-> Markup in html is done through html tags
